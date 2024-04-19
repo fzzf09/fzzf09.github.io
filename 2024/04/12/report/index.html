@@ -6,15 +6,15 @@
   
   <title>REPORT | LOL All Random All Mid Tutorial</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="Hexo博文置顶（自定义排序）使用的是top属性，top值越高，排序越在前，不设置top值得博文按照时间顺序排序。修改Hexo文件夹下的node_modules&#x2F;hexo-generator-index&#x2F;lib&#x2F;generator.js 打开在最后添加如下javascript代码———————————————— posts.data &#x3D; posts.data">
+  <meta name="description" content="#一 Hexo博文自定义排序 使用的是top属性，top值越高，排序越在前，不设置top值得博文按照时间顺序排序。修改Hexo文件夹下的node_modules&#x2F;hexo-generator-index&#x2F;lib&#x2F;generator.js 打开在最后添加如下javascript代码———————————————— posts.data &#x3D; posts.data">
 <meta property="og:type" content="article">
 <meta property="og:title" content="REPORT">
 <meta property="og:url" content="https://fzzf09.github.io/2024/04/12/report/index.html">
 <meta property="og:site_name" content="LOL All Random All Mid Tutorial">
-<meta property="og:description" content="Hexo博文置顶（自定义排序）使用的是top属性，top值越高，排序越在前，不设置top值得博文按照时间顺序排序。修改Hexo文件夹下的node_modules&#x2F;hexo-generator-index&#x2F;lib&#x2F;generator.js 打开在最后添加如下javascript代码———————————————— posts.data &#x3D; posts.data">
+<meta property="og:description" content="#一 Hexo博文自定义排序 使用的是top属性，top值越高，排序越在前，不设置top值得博文按照时间顺序排序。修改Hexo文件夹下的node_modules&#x2F;hexo-generator-index&#x2F;lib&#x2F;generator.js 打开在最后添加如下javascript代码———————————————— posts.data &#x3D; posts.data">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-04-12T03:00:00.000Z">
-<meta property="article:modified_time" content="2024-04-19T10:35:33.814Z">
+<meta property="article:modified_time" content="2024-04-19T10:44:14.259Z">
 <meta property="article:author" content="fzzf">
 <meta name="twitter:card" content="summary">
   
@@ -45,6 +45,10 @@
       <h1 id="logo-wrap">
         <a href="/" id="logo">LOL All Random All Mid Tutorial</a>
       </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">written by fzzf</a>
+        </h2>
       
     </div>
     <div id="header-inner" class="inner">
@@ -93,10 +97,14 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>Hexo博文置顶（自定义排序）<br>使用的是top属性，top值越高，排序越在前，不设置top值得博文按照时间顺序排序。<br>修改Hexo文件夹下的node_modules&#x2F;hexo-generator-index&#x2F;lib&#x2F;generator.js</p>
+        <p>#一 Hexo博文自定义排序</p>
+<p>使用的是top属性，top值越高，排序越在前，不设置top值得博文按照时间顺序排序。<br>修改Hexo文件夹下的node_modules&#x2F;hexo-generator-index&#x2F;lib&#x2F;generator.js</p>
 <p>打开在最后添加如下javascript代码<br>————————————————</p>
-<p>posts.data &#x3D; posts.data.sort(function(a, b) {<br>if(a.top &amp;&amp; b.top) { &#x2F;&#x2F; 两篇文章top都有定义<br>    if(a.top &#x3D;&#x3D; b.top) return b.date - a.date; &#x2F;&#x2F; 若top值一样则按照文章日期降序排<br>    else return b.top - a.top; &#x2F;&#x2F; 否则按照top值降序排<br>}<br>else if(a.top &amp;&amp; !b.top) { &#x2F;&#x2F; 以下是只有一篇文章top有定义，那么将有top的排在前面（这里用异或操作居然不行233）<br>    return -1;<br>}<br>else if(!a.top &amp;&amp; b.top) {<br>    return 1;<br>}<br>else return b.date - a.date; &#x2F;&#x2F; 都没定义按照文章日期降序排</p>
+<p>posts.data &#x3D; posts.data.sort(function(a, b) {<br>if(a.top &amp;&amp; b.top) { &#x2F;&#x2F; 两篇文章top都有定义<br>    if(a.top &#x3D;&#x3D; b.top) return b.date - a.date; &#x2F;&#x2F; 若top值一样则按照文章日期降序排<br>    else return b.top - a.top; &#x2F;&#x2F; 否则按照top值降序排<br>}<br>else if(a.top &amp;&amp; !b.top) { &#x2F;&#x2F; 以下是只有一篇文章top有定义，那么将有top的排在前面（这里用异或操作居然不行233）<br>    return -1;<br>}<br>else if(!a.top &amp;&amp; b.top) {<br>    return 1;<br>}<br>else return b.date - a.date;}） &#x2F;&#x2F; 都没定义按照文章日期降序排</p>
 <p>在写文章的时候添加top属性就行了。</p>
+<p>#二 博客网站的基本设置</p>
+<p>Site<br>Setting	Description<br>title	The title of your website<br>subtitle	The subtitle of your website<br>description	The description of your website<br>author	Your name<br>language	The language of your website. Use a 2-lettter ISO-639-1 code. Default is en.<br>timezone	The timezone of your website. Hexo uses the setting on your computer by default.</p>
+<p> Hexo支持配置如上站点参数，其中title属性就是博客的标题<br> 打开站点配置文件_config.yml，找到如下配置项，配置成想要的值</p>
 
       
     </div>
